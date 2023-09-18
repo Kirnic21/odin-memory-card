@@ -1,35 +1,33 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Cards from './components/Cards'
 import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+let cum = []
+for(let i = 0;i<5;i++)
+{
+  let randomNumber = Math.floor((Math.random() * 1000))
+  cum.push(randomNumber)
 }
+function App() {
 
-export default App
+  let [pokemonsId,setPokemons] = useState(cum)
+
+  const generateCards = ()=>{
+      let randomNumber = Math.floor((Math.random() * 1000))
+      setPokemons([...pokemonsId,randomNumber])
+
+  }
+  const shuffleOnClick = ()=>{
+    const shuffledArray = pokemonsId.map((a) => ({ sort: Math.random(), value: a }))
+    .sort((a, b) => a.sort - b.sort)
+    .map((a) => a.value);
+    setPokemons(shuffledArray)
+  }
+  
+    return (
+    <div className='board'>
+    <button onClick={shuffleOnClick}>gg</button>
+    {pokemonsId.map((pokemon1) => <Cards pokemon = {pokemon1} key={pokemon1} onClick ={()=>{console.log("cum")}}></Cards>)}
+    </div>  
+  )
+    }
+          export default App
