@@ -29,7 +29,11 @@ function App() {
   const generateOrRemovePoints = (e)=>{
     if(score.includes(e.target.id))
     {
+      if(points > highScore)
+      {
       setHighscore(highScore = points)
+      }
+      
       score.length = 0
       setPoints(points = -1)
       console.log(score,"clear!")
