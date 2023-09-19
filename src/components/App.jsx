@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Cards from './components/Cards'
+import Cards from './Cards'
 import './App.css'
 let randomPokemons = []
 for(let i = 0;i<10;i++)
@@ -17,7 +17,7 @@ function App() {
   let [points,setPoints] = useState(0)
   let [score,setScore] = useState([])
   let [highScore,setHighscore] = useState(0)
-  let [message,setMessage] =useState("Good Game")
+
   const shuffleOnClick = (e,key)=>{
     const shuffledArray = pokemonsId.map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
