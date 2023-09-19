@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
             const fetchData = async ()=>{
                 const data = await fetch('https://pokeapi.co/api/v2/pokemon/'+props.pokemon)
                 const dataJson = await data.json()
+      
                 setPokemon(dataJson)         
             }
             fetchData()
@@ -19,11 +20,12 @@ import React, { useEffect, useState } from "react";
             }
             fetchData()
         },[])
-        console.log(pokemon)
-    return <div className = "card">
-        < h1>{pokemon.name}</h1>
-        <img src ={sprite.front_default}></img>       
+return <button onClick = {props.shuffle} key={pokemon.id} id = {pokemon.id}>
+    <div id = {pokemon.id} className = "card">
+        < h1 id= {pokemon.id}>{pokemon.name}</h1>
+        <img src ={sprite.front_default} id = {pokemon.id}></img>       
 
     </div>
+    </button>
 }
 export default Cards
